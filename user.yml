@@ -1,7 +1,7 @@
 - name: Creating user "{{ username }}" with admin access
   user:
-    name: {{ username }}
-#    password: {{ password | password_hash('sha512') }}
+    name: "{{ username }}"
+#    password: "{{ password | password_hash('sha512') }}"
     groups: admin append=yes
   when:  assigned_role  == "yes"
 
