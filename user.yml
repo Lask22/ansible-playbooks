@@ -1,10 +1,10 @@
 ---
-- name: Creating user "{{ username }}"with admin access
+- name: Creating user "{{ username }}" with admin access
   user:
     name: "{{ username }}"
-#    password: "{{ password | password_hash('sha512') }}"
-    groups: admin append=yes
-  when:  assigned_role  == "yes"
+    groups:
+      - wheel
+    state: present
   
 - name: Add public key to authorized_keys
   authorized_key:
