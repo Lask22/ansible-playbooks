@@ -6,7 +6,7 @@
   when:  assigned_role  == "yes"
 
 - name: Add public key to authorized_keys
-        authorized_key:
-          user: "{{ username }}"
-          state: present
-          key: "{{ pubkey }}"
+  authorized_key:
+    user: "{{ username }}"
+    state: present
+    key: "{{ pubkey }}"
