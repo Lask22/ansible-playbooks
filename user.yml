@@ -3,13 +3,13 @@
   remote_user: ansible  
   tasks:
     - name: Creating user "{{ usernames }}" in group wheel
-     user:
-      name: "{{ usernames }}"
-      groups:
+      user:
+        name: "{{ usernames }}"
+        groups:
          - wheel
       state: present
     - name: Add public key to authorized_keys
       authorized_key:
-       user: "{{ usernames }}"
-       state: present
-       key: "{{ pubkeys }}"
+        user: "{{ usernames }}"
+        state: present
+        key: "{{ pubkeys }}"
