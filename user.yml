@@ -1,14 +1,23 @@
 ---
-- hosts: "all"
-  remote_user: ansible  
-- name: Creating user "{{ usernames }}" in group wheel
-  user:
-    name: "{{ usernames }}"
-    groups:
-      - wheel
-    state: present
-#- name: Add public key to authorized_keys
-#  authorized_key:
-#  user: "{{ usernames }}"
-#  state: present
-#  key: "{{ pubkeys }}"
+- name: Create New User "{{ usernames }}"
+  hosts: all
+  become: true
+  gather_facts: false
+  vars:
+# Define your username and password here that you want to create on target hosts.
+    username: newuser
+    userpass: user_password
+  tasks:
+    - name: Create User
+      ansible.builtin.user:
+        name: "{{ usernames }}"
+        state: present
+        shell: /bin/bash
+        groups: wheel
+        append: yes
+
+    - name: Deploy SSH Public Key to user "{{ usernames }}"
+      ansible.posix.authorized_key:
+        user: "{{ usernames }}"
+        state: present
+        key: "{{ pubkeys }}"
