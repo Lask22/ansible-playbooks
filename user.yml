@@ -1,4 +1,5 @@
-- name: Creating_user_with_admin_access
+---
+- name: Creating user "{{ username }}"with admin access
   user:
     name: "{{ username }}"
 #    password: "{{ password | password_hash('sha512') }}"
