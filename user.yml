@@ -1,6 +1,7 @@
 ---
 - name: Create New User "{{ usernames }}"
   hosts: all
+  remote_user: ansible
   become: true
   gather_facts: false
   vars:
