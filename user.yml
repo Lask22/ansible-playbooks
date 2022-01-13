@@ -4,10 +4,6 @@
   remote_user: ansible
   become: true
   gather_facts: false
-  vars:
-# Define your username and password here that you want to create on target hosts.
-    username: newuser
-    userpass: user_password
   tasks:
     - name: Create User
       ansible.builtin.user:
