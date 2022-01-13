@@ -18,7 +18,7 @@
         append: yes
 
     - name: Deploy SSH Public Key to user "{{ username }}"
-      ansible.posix.authorized_key:
+      authorized_key:
         user: "{{ username }}"
         state: present
         key: "{{ pubkey }}"
