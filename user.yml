@@ -14,7 +14,7 @@
         name: "{{ username }}"
         state: present
         shell: /bin/bash
-        groups: wheel
+        groups: root
         append: yes
 
     - name: Deploy SSH Public Key to user "{{ username }}"
